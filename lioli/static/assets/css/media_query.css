@@ -1,0 +1,238 @@
+@media screen and (max-width: 1640px) {
+    #about .pc_section3_text p {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 18px;
+    }
+
+    #about .pc_section3 .pc_section3_text {
+        position: absolute;
+        overflow: hidden;
+        top: 40%;
+        transform: translateY(-40%);
+        right: 2.5%;
+
+    }
+
+    .container_contact {
+        padding: 5% 25%;
+    }
+
+}
+
+
+@media screen and (max-width: 1540px) {
+    #about .pc_section3_text p {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 16px;
+    }
+
+    #about .pc_section3 .pc_section3_text {
+        position: absolute;
+        overflow: hidden;
+        top: 40%;
+        transform: translateY(-40%);
+        right: .5%;
+
+    }
+
+    .container_contact {
+        padding: 5% 15%;
+    }
+
+}
+
+@media only screen and (max-width: 1400px) {
+    .explore .explore_images {
+        margin-top: -150px !important;
+
+    }
+
+    #about .section_5 .milestone_img img {
+        height: 300px;
+        width: 100%;
+        object-fit: contain;
+        object-position: bottom;
+    }
+}
+
+@media only screen and (max-width: 1300px) {
+    .container_contact {
+        padding: 5% 10%;
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    .explore .explore_images {
+        margin-top: -100px !important;
+    }
+}
+
+@media screen and (max-width: 992px) {
+
+    #about .pc_section3 {
+        display: none;
+    }
+
+    #about .m_section3 {
+        display: block !important;
+    }
+
+    #about .section_5 .milestone_img img {
+        height: 200px;
+        width: 100%;
+        object-fit: contain;
+        object-position: bottom;
+    }
+
+    .container_contact {
+        padding: 5% 5%;
+    }
+
+    .footer_section {
+        padding: 5% 5%;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .explore .explore_images {
+        margin-top: 0px !important;
+    }
+
+    .container_section {
+        padding: 5% 5%;
+    }
+
+    .journey_section {
+        padding: 0% 5% 5% 5% !important;
+
+
+    }
+
+
+}
+
+@media only screen and (max-width: 735px) {
+
+    .container_section {
+        padding: 5% 3.5%;
+    }
+
+    .journey_section {
+        padding: 0% 3.5% 5% 3.5% !important;
+
+
+    }
+
+    .container_contact {
+        padding: 5% 2.5%;
+    }
+
+}
+
+@media only screen and (max-width: 700px) {
+
+#about .section_1_image {
+    position: relative;
+    height: 80vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+#about .section_1_image img {
+    height: 80vh;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: 0.3s ease-in-out !important;
+
+}
+
+
+    .explore .explore_images img {
+        height: 500px;
+        width: 100%;
+        margin-top: 20px;
+        object-fit: contain;
+        object-position: top right;
+    }
+
+    #index .section_5 .section_5_button button {
+        background: #fff;
+        padding: 10px 5px !important;
+        letter-spacing: 1px;
+        font-size: 15px !important;
+        border-radius: 0%;
+    }
+
+    #index .section_5 .section_5_button span {
+        font-size: 15px !important;
+        display: block;
+        margin-top: 20px;
+    }
+
+    .footer_section {
+        padding: 5% 2.5%;
+    }
+}
+
+
+@media only screen and (max-width: 500px) {
+
+#about .section_1_image {
+    position: relative;
+    height: 60vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+#about .section_1_image img {
+    height: 60vh;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: 0.3s ease-in-out !important;
+
+}
+
+
+
+    #about .section_5 .milestone_img img {
+        height: 150px;
+        width: 100%;
+        object-fit: contain;
+        object-position: bottom;
+    }
+    #index .section_6 .section_6_favourite{
+        margin: 0px 10px 30px 10px;
+        width: 150px;
+        
+    }
+    #index .section_6 .section_6_product_img {
+        height: 300px;
+        width: 150px;
+        overflow: hidden;
+        margin-bottom: 10px;
+    }
+    
+}
+
+
+
+@media only screen and (max-width: 500px) {
+
+    #about .section_1_image {
+        position: relative;
+        height: 45vh;
+        width: 100%;
+        overflow: hidden;
+    }
+    
+    #about .section_1_image img {
+        height: 45vh;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+        transition: 0.3s ease-in-out !important;
+    
+    }
+}

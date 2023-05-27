@@ -1,0 +1,257 @@
+{% extends "admin/layout.html" %}
+{% block content %}
+<style>
+    .switchs {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+.sliders,.sliders2 {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.sliders:before,.sliders2:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+ .sliders {
+  background-color: #2196F3;
+}
+
+ .sliders {
+  box-shadow: 0 0 1px #2196F3;
+}
+.sliders2 {
+  background-color: #ccc;
+}
+
+ .sliders2 {
+  box-shadow: 0 0 1px #ccc;
+}
+.sliders:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.sliders.rounds,.sliders2.rounds {
+  border-radius: 34px;
+}
+
+.sliders.rounds:before,.sliders2.rounds:before {
+  border-radius: 50%;
+}
+</style>
+<div class="x_content container">
+    <div class="row px-md-5 px-2">
+        <div class="col-md-6 mb-2">
+            <h3>
+                Users
+            </h3>
+        </div>
+        <div class="col-md-6 mb-2 text-md-right">
+            <button class="btn-primary btn mt-3">
+                <a href='{{url_for("admin.add_user")}}' style="color: inherit;">
+                    Add User
+                </a>
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card-box table-responsive">
+                <table id="datatable-buttons" class="table table-striped table-bordered" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>
+                                Id
+                            </th>
+                            <th>
+                                First Name
+                            </th>
+                            <th>
+                                Last Name
+                            </th>
+                            <th>
+                                Email
+                            </th>
+                            <th>
+                                Mobile Number
+                            </th>
+                            <th>
+                                Active
+                            </th>
+                            <th>
+                                Permission
+                            </th>
+                            <th>
+                                Date Added
+                            </th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                        {% if user.permission != 0 %}
+                        <tr>
+                            <td>
+                                {{user.id}}
+                            </td>
+                            <td>
+                                {{user.first_name}}
+                            </td>
+                            <td>
+                                {{user.last_name}}
+                            </td>
+                            <td>
+                                {{user.email}}
+                            </td>
+                            <td>
+                                {{user.mobile_number}}
+                            </td>
+                            <td class="text-center">
+                                {% if user.is_active == True %}
+                                <label class="switchs">
+                                    <span class="sliders rounds" data-toggle="modal" data-target="#deactivate_user{{user.id}}"></span>
+                                </label>
+                                {% else %}
+                                <label class="switchs">
+                                    <span class="sliders2 rounds" data-toggle="modal" data-target="#activate_user{{user.id}}"></span>
+                                </label>
+                                {% endif %}
+                                <!-- <input id="myCheckbox" type="checkbox"/> -->
+                            </td>
+                            <td>
+                                {{user.permission}}
+                            </td>
+                            <td>
+                                {{user.date_added}}
+                            </td>
+                            <td class="action">
+                                <button class="btn" data-toggle="modal" data-target="#delete_user{{user.id}}">
+                                    <i class="fa fa-trash-o"></i>
+                                </button>
+                                <button class="btn" data-toggle="modal" data-target="#edit_user{{user.id}}">
+                                    <i class="fa fa-pencil-square-o"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <div class="modal fade" id="activate_user{{user.id}}" tabindex="-1" role="dialog" aria-labelledby="activate_user{{user.id}}Label" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="activate_user{{user.id}}Label">Activate Users</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Are You Sure You Want To Activate The {{user.first_name}} ??
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">
+                                            <a href='{{url_for("admin.activate_user",user_id=user.id)}}' style="color: inherit;">
+                                                Confirm
+                                            </a>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="deactivate_user{{user.id}}" tabindex="-1" role="dialog" aria-labelledby="deactivate_user{{user.id}}Label" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="deactivate_user{{user.id}}Label">Deactivate Users</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Are You Sure You Want To Deactivate The {{user.first_name}} ??
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">
+                                            <a href='{{url_for("admin.deactivate_user",user_id=user.id)}}' style="color: inherit;">
+                                                Confirm
+                                            </a>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="edit_user{{user.id}}" tabindex="-1" role="dialog" aria-labelledby="edit_user{{user.id}}Label" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="edit_user{{user.id}}Label">Edit Users</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Are You Sure You Want To Edit The {{user.first_name}} ??
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">
+                                            <a href='{{url_for("admin.edit_user",user_id=user.id)}}' style="color: inherit;">
+                                                Confirm
+                                            </a>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="delete_user{{user.id}}" tabindex="-1" role="dialog" aria-labelledby="delete_user{{user.id}}Label" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="delete_user{{user.id}}Label">Delete Users</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Are You Sure You Want To Delete The {{user.first_name}} ??
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">
+                                            <a href='{{url_for("admin.delete_user",user_id=user.id)}}' style="color: inherit;">
+                                                Confirm
+                                            </a>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block content %}
+<div id="catalogue">
+    <section class="section_1 container_section">
+    </section>
+    <section class="section-2">
+        <div class="">
+            <div class="row justify-content-center">
+                <div class="col-12 mb-5 text-center">
+                    <div class="section_h2">
+                        <img src="{{url_for('static', filename='assets/images/index/about_line.png')}}" class="line">
+                    </div>
+                </div>
+                <div class="col-12 mb-5 text-center">
+                    <h2 class="section_h2" data-aos="fade">
+                        Thank You For Submitting Your Query.
+                        <br>
+                        We Will Revert You Back By Mail As Soon As Posible.
+                    </h2>
+                </div>
+                <div class="col-md-6 col-10 mb-5 mt-0">
+                    <div class="wrapper text-center">
+                        <div class="text-center justify-content-center">
+                            <div>
+                                <button>
+                                    <a href="{{url_for("main.home")}}" style="color: inherit !important;">
+                                        Go To Main Page
+                                    </a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

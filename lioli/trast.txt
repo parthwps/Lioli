@@ -1,0 +1,138 @@
+GRANT CREATE, ALTER, DROP, INSERT, UPDATE, DELETE, SELECT, REFERENCES, RELOAD on *.* TO 'lioliWeb'@'localhost' WITH GRANT OPTION;
+
+CREATE USER 'lioliWeb'@'localhost' IDENTIFIED BY 'lioliWeb';
+
+mysql -u lioliweb -p lioli_website < lioli_website.sql
+
+
+
+
+server {
+    listen 80;
+    server_name 165.232.182.211;
+
+    location /static {
+        alias /home/cretx/lioli/Lioli/static;
+    } 
+
+    location / {
+        proxy_pass ​http://localhost:8000​;
+        include /etc/nginx/proxy_params;
+        proxy_redirect off;
+    }
+}
+
+
+server{
+        listen 80;
+        server_name 165.232.182.211;
+
+        location /static {
+                alias /home/cretx/Lioli/lioli/static;
+        }
+
+        location / {
+                proxy_pass http://localhost:8000;
+                include /etc/nginx/proxy_params;
+                proxy_redirect off;
+        }
+}
+
+
+
+[program:lioli]
+directory = /home/cretx/Lioli
+command = /home/cretx/Lioli/env/bin/gunicorn --bind 0.0.0.0:5001 run:app
+user = cretx
+autostart=true
+autorestart=true
+stopasgroup=true
+killasgroup=true
+stderr_logfile=/home/cretx/Lioli/lioli-logs/lioli.err.log
+stdout_logfile=/home/cretx/Lioli/lioli-logs/lioli.out.log
+
+
+
+
+
+sudo mkdir -p Lioli/lioli-logs
+sudo touch /home/cretx/Lioli/lioli-logs/lioli.err.log
+sudo touch /home/cretx/Lioli/lioli-logs/lioli.out.log
+sudo supervisorctl reload
+
+
+
+sudo nano /etc/nginx/nginx.conf
+
+client_max_body_size 100M;
+
+
+porcelain-tiles-vs-ceramic-tiles
+how-to-keep-bathroom-floor-dry
+why-porcelain-tiles-are-better-than-natural-stones
+kitchen-countertops-2022-design-inspirations
+
+
+
+
+
+
+
+
+
+
+server {
+       listen 8080;
+       listen [::]:8080;
+
+       server_name 165.232.182.211/lioli_test;
+
+       root /var/www/html/helloworld-nginx;
+       index index.html;
+
+       location / {
+               try_files $uri $uri/ =404;
+       }
+}
+
+
+
+server{
+    if ($host = lioliceramica.com) {
+        return 301 https://www.$host$request_uri;
+    } # managed by Certbot
+        server_name lioliceramica.com;
+    return 404; # managed by Certbot
+
+
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/lioliceramica.com/fullchain.pem; 
+    ssl_certificate_key /etc/letsencrypt/live/lioliceramica.com/privkey.pem; 
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+
+
+}
+server{
+    if ($host = lioliceramica.com) {
+        return 301 https://www.$host$request_uri;
+    } # managed by Certbot
+
+
+
+
+
+
+        listen 80;
+        server_name lioliceramica.com;
+    return 404; # managed by Certbot
+
+
+}
+
+
+
+scp -r cretx@34.68.163.226:/home/cretx/vanzaro/vanzaro.sql /home/hi/Pictures

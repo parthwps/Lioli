@@ -1,0 +1,128 @@
+{% extends "admin/layout.html" %}
+{% block content %}
+<div class="x_content container">
+    <div class="row px-md-5 px-2">
+        <div class="col-md-6 mb-2">
+            <h3>
+                Career
+            </h3>
+        </div>
+        <div class="col-md-6 mb-2 text-md-right">
+            <button class="btn-primary btn mt-3">
+                <a href='{{url_for("admin.add_career")}}' style="color: inherit;">
+                    Add Career
+                </a>
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card-box table-responsive">
+                <table id="datatable-buttons" class="table table-striped table-bordered" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>
+                                Id
+                            </th>
+                            <th>
+                                Career Post
+                            </th>
+                            <th>
+                                Locations
+                            </th>
+                            <th>
+                                Experiences
+                            </th>
+                            <th>
+                                Salary
+                            </th>
+                            <th>
+                                Description
+                            </th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for career in careers %}
+                        <tr>
+                            <td>
+                                {{career.id}}
+                            </td>
+                            <td>
+                                {{career.post}}
+                            </td>
+                            <td>
+                                {{career.location}}
+                            </td>
+                            <td>
+                                {{career.experience}}
+                            </td>
+                            <td>
+                                {{career.salary}}
+                            </td>
+                            <td>
+                                {{career.description}}
+                            </td>
+                            <td class="action">
+                                <button class="btn" data-toggle="modal" data-target="#delete_career{{career.id}}">
+                                    <i class="fa fa-trash-o"></i>
+                                </button>
+                                <button class="btn" data-toggle="modal" data-target="#career{{career.id}}">
+                                    <i class="fa fa-pencil-square-o"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <div class="modal fade" id="career{{career.id}}" tabindex="-1" role="dialog" aria-labelledby="career{{career.id}}Label" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="career{{career.id}}Label">Modal title</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Are You Sure You Want To Edit The {{career.post}} ??
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">
+                                            <a href='{{url_for("admin.edit_career",career_id=career.id)}}' style="color: inherit;">
+                                                Confirm
+                                            </a>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="delete_career{{career.id}}" tabindex="-1" role="dialog" aria-labelledby="delete_career{{career.id}}Label" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="delete_career{{career.id}}Label">Modal title</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Are You Sure You Want To Delete The {{career.post}} ??
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">
+                                            <a href='{{url_for("admin.delete_career",career_id=career.id)}}' style="color: inherit;">
+                                                Confirm
+                                            </a>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

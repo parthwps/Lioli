@@ -1,0 +1,1 @@
+06-16 08:17:53.863   614 18178 E mm-camera: <IFACE ><ERROR> 2423: iface_axi_handle_sof_event: Event SOF session 2 VFE1, src 0 with frame_id 21 ts: 163963271105000

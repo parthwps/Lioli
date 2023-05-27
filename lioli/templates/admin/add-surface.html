@@ -1,0 +1,33 @@
+{% extends "admin/layout.html" %}
+{% block content %}
+<div class="x_content container">
+    <Fieldset>
+        <Legend>
+            <h3>
+                Add Finish
+            </h3>
+        </Legend>
+        <form {% if surface_id %}action="/admin/edit_surface/{{surface_id}}" {% else %} action="/admin/add_surface" {% endif %} method="post">
+            <div class="form-group">
+                <label for="surface">
+                    Finish
+                </label>
+                {% if surface_id %}
+                <input type="text" id="surface" class="form-control" name="surface_name" placeholder="Finish" value="{{surface.surface}}" required>
+                {% else %}
+                <input type="text" id="surface" class="form-control" name="surface_name" placeholder="Finish" required>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">
+                    {% if surface_id %}
+                    Edit Finish
+                    {% else %}
+                    Add Finish
+                    {% endif %}
+                </button>
+            </div>
+        </form>
+    </Fieldset>
+</div>
+{% endblock content %}

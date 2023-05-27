@@ -1,0 +1,33 @@
+{% extends "admin/layout.html" %}
+{% block content %}
+<div class="x_content container">
+    <Fieldset>
+        <Legend>
+            <h3>
+                Add Thickness
+            </h3>
+        </Legend>
+        <form {% if thickness_id %}action="/admin/edit_thickness/{{thickness_id}}" {% else %} action="/admin/add_thickness" {% endif %} method="post">
+            <div class="form-group">
+                <label for="thickness">
+                    Thickness
+                </label>
+                {% if thickness_id %}
+                <input type="text" id="thickness" class="form-control" name="thickness_name" placeholder="thickness" value="{{thickness.thickness}}" required>
+                {% else %}
+                <input type="text" id="thickness" class="form-control" name="thickness_name" placeholder="thickness" required>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">
+                    {% if thickness_id %}
+                    Edit Thickness
+                    {% else %}
+                    Add Thickness
+                    {% endif %}
+                </button>
+            </div>
+        </form>
+    </Fieldset>
+</div>
+{% endblock content %}

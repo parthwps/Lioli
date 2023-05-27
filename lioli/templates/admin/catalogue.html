@@ -1,0 +1,116 @@
+{% extends "admin/layout.html" %}
+{% block content %}
+<div class="x_content container">
+  <div class="row px-md-5 px-2">
+    <div class="col-md-6 mb-2">
+      <h3>
+        Catalogues
+      </h3>
+    </div>
+
+    <div class="col-md-6 mb-2 text-md-right">
+      <button class="btn-primary btn mt-3">
+        <a href='{{url_for("admin.add_catalogue")}}' style="color: inherit;">
+          Add Catalogue
+        </a>
+      </button>
+    </div>
+  </div>
+
+  <div class="row">
+      <div class="col-sm-12">
+        <div class="card-box table-responsive">
+
+        <table id="datatable-buttons" class="table table-striped table-bordered" style="width:100%">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Catalogue Name</th>
+              <th> Preview </th>
+              <th>Action</th>
+            </tr>
+          </thead>
+
+
+          <tbody>
+            {% for catalogue in catalogues %}
+            <tr>
+              <td>
+                {{catalogue.id}}
+              </td>
+              <td>
+                {{catalogue.catalogue_name}}
+              </td>
+              <td>
+                <img src="{{url_for('static', filename='admin/uploads/catalogue/preview/'+catalogue.preview)}}" class="img-fluid" style="height: 150px;width: 150px;object-fit: cover;object-position: left;" alt="{{catalogue.catalogue_image}}">
+              </td>
+              <td class="action">
+                <button class="btn"  data-toggle="modal" data-target="#delete_catalogue{{catalogue.id}}">
+                    <i class="fa fa-trash-o"></i>
+                </button>
+                <button class="btn"  data-toggle="modal" data-target="#catalogue{{catalogue.id}}">
+                    <i class="fa fa-pencil-square-o"></i>
+                </button>
+              </td>
+            </tr>
+
+            <div class="modal fade" id="catalogue{{catalogue.id}}" tabindex="-1" role="dialog" aria-labelledby="catalogue{{catalogue.id}}Label" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="catalogue{{catalogue.id}}Label">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    Are You Sure You Want To Edit The {{catalogue.catalogue_name}} ??
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">
+                      <a href='{{url_for("admin.edit_catalogue",catalogue_id = catalogue.id)}}' style="color: inherit;">
+                        Confirm
+                      </a>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="modal fade" id="delete_catalogue{{catalogue.id}}" tabindex="-1" role="dialog" aria-labelledby="delete_catalogue{{catalogue.id}}Label" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="delete_catalogue{{catalogue.id}}Label">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    Are You Sure You Want To Delete The {{catalogue.catalogue}} ??
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">
+                      <a href='{{url_for("admin.delete_catalogue",catalogue_id=catalogue.id)}}' style="color: inherit;">
+                        Confirm
+                      </a>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            {% endfor %}
+            
+            
+            </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

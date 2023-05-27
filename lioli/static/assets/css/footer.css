@@ -1,0 +1,119 @@
+.footer_section {
+    padding: 2.5% 10%;
+    background: #333333;
+}
+
+.footer_section .footer-blog {
+    height: 80px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.footer_section .footer-blog img {
+    height: 100%;
+    width: 100%;
+    object-position: center;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.footer_section .footer-blog h6 {
+    color: #fff;
+    font-size: 16px;
+    letter-spacing: 1px;
+    line-height: 25px;
+    font-weight: normal;
+    text-align: justify;
+    word-wrap: break-word;
+}
+
+.footer_section .white_logo img {
+    height: 30px;
+    width: auto;
+}
+
+.footer_section .border_section h4 {
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    padding-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+
+.footer_section .border_section p {
+    color: #fff;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.footer_section .border_section a {
+    color: #fff;
+    font-size: 16px;
+    text-decoration: none;
+    line-height: 26px;
+}
+
+.footer_section .footer_link_section h4 {
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    padding-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+
+.footer_section .footer_link_section ul {
+    display: block !important;
+    margin: 0;
+    padding: 0;
+}
+
+.footer_section .footer_link_section ul li {
+    display: block !important;
+}
+
+.footer_section .footer_link_section a {
+    color: #fff;
+    font-size: 16px;
+    text-decoration: none;
+    line-height: 30px;
+}
+
+.footer_section .social_link_section h4 {
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    padding-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+
+.footer_section .social_link_section ul {
+    display: block !important;
+    margin: 0;
+    padding: 0;
+}
+
+.footer_section .social_link_section ul li {
+    display: inline-block !important;
+}
+
+.footer_section .social_link_section a {
+    color: #fff;
+    font-size: 20px;
+    padding: 0px 5px;
+    text-decoration: none;
+    line-height: 35px;
+}
+
+
+
+.credit_section {
+    padding: 10px 10%;
+}
+
+.credit_section h4 {
+    font-size: 15px;
+    letter-spacing: 1px;
+}

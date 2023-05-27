@@ -1,0 +1,109 @@
+{% extends "admin/layout.html" %}
+{% block content %}
+<div class="x_content container">
+    <div class="row px-md-5 px-2">
+        <div class="col-md-6 mb-2">
+            <h3>
+                Gallery
+            </h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card-box table-responsive">
+                <table id="datatable-buttons" class="table table-striped table-bordered" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Link</th>
+                            <th> Preview </th>
+                            <th> Video </th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for gallery in gallerys %}
+                        <tr>
+                            <td>
+                                {{gallery.id}}
+                            </td>
+                            <td>
+                                {{gallery.link}}
+                            </td>
+                            <td>
+                                {% if gallery.preview == "" or gallery.preview == None %}
+                                None
+                                {% else %}
+                                <img src="{{url_for('static', filename='admin/uploads/gallery/preview/'+gallery.preview)}}" class="img-fluid" style="height: 150px;width: 150px;object-fit: cover;object-position: left;" alt="{{gallery.gallery_image}}">
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if gallery.video == "" or gallery.video == None %}
+                                None
+                                {% else %}
+                                {{gallery.video}}
+                                {% endif %}
+                            </td>
+                            <td class="action">
+                                <button class="btn" data-toggle="modal" data-target="#delete_gallery{{gallery.id}}">
+                                    <i class="fa fa-trash-o"></i>
+                                </button>
+                                <button class="btn" data-toggle="modal" data-target="#gallery{{gallery.id}}">
+                                    <i class="fa fa-pencil-square-o"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <div class="modal fade" id="gallery{{gallery.id}}" tabindex="-1" role="dialog" aria-labelledby="gallery{{gallery.id}}Label" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="gallery{{gallery.id}}Label">Edit Gallery</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Are You Sure You Want To Edit The Gallery ??
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">
+                                            <a href='{{url_for("admin.edit_gallery",gallery_id = gallery.id)}}' style="color: inherit;">
+                                                Confirm
+                                            </a>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="delete_gallery{{gallery.id}}" tabindex="-1" role="dialog" aria-labelledby="delete_gallery{{gallery.id}}Label" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="delete_gallery{{gallery.id}}Label">Delete Gallery</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Are You Sure You Want To Delete The Gallery ??
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">
+                                            <a href='{{url_for("admin.delete_gallery",gallery_id = gallery.id)}}' style="color: inherit;">
+                                                Confirm
+                                            </a>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

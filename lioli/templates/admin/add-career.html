@@ -1,0 +1,83 @@
+{% extends "admin/layout.html" %}
+{% block content %}
+<div class="x_content container">
+    <Fieldset>
+        <Legend>
+            <h3>
+                Add Career
+            </h3>
+        </Legend>
+        <form {% if career_id %}action="/admin/edit_career/{{career_id}}" {% else %} action="/admin/add_career" {% endif %} method="post">
+            <div class="form-group">
+                <label for="career">
+                    Career Post
+                </label>
+                {% if career_id %}
+                <input type="text" id="career" class="form-control" name="post" placeholder="Post" value="{{career.post}}" required>
+                {% else %}
+                <input type="text" id="career" class="form-control" name="post" placeholder="Post" required>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="career">
+                    Career Locations
+                </label>
+                {% if career_id %}
+                <input type="text" id="career" class="form-control" name="location" placeholder="Career Locations" value="{{career.location}}" required>
+                {% else %}
+                <input type="text" id="career" class="form-control" name="location" placeholder="Career Locations" required>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="career">
+                    Experience
+                </label>
+                {% if career_id %}
+                <input type="text" id="career" class="form-control" name="experience" placeholder="Experience" value="{{career.experience}}" required>
+                {% else %}
+                <input type="text" id="career" class="form-control" name="experience" placeholder="Experience" required>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="career">
+                    Salary
+                </label>
+                {% if career_id %}
+                <input type="text" id="career" class="form-control" name="salary" placeholder="Salary" value="{{career.salary}}" required>
+                {% else %}
+                <input type="text" id="career" class="form-control" name="salary" placeholder="Salary" required>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="career">
+                    Description
+                </label>
+                {% if career_id %}
+                <input type="text" id="career" class="form-control" name="description" placeholder="Description" value="{{career.description}}" required>
+                {% else %}
+                <input type="text" id="career" class="form-control" name="description" placeholder="Description" required>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="career">
+                    Requirements
+                </label>
+                {% if career_id %}
+                <input type="text" id="career" class="form-control" name="requirements" placeholder="Requirements" value="{{career.requirements}}" required>
+                {% else %}
+                <input type="text" id="career" class="form-control" name="requirements" placeholder="Requirements" required>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">
+                    {% if career_id %}
+                    Edit Career
+                    {% else %}
+                    Add Career
+                    {% endif %}
+                </button>
+            </div>
+        </form>
+    </Fieldset>
+</div>
+{% endblock content %}

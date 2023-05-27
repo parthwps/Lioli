@@ -1,0 +1,257 @@
+{% extends "layout.html" %}
+{% block content %}
+<div id="contact">
+    <section class="section_1 container_section">
+    </section>
+    <section class="section_2">
+        <div class="row">
+            <div class="col-12 mb-3 text-center">
+                <div class="section_h2">
+                    <img src="{{url_for('static', filename='assets/images/contact/about_line.png')}}" class="line">
+                </div>
+            </div>
+            <div class="col-12 mb-5 pb-0 text-center">
+                <h2 class="section_h2" data-aos="fade">
+                    Contact Us
+                </h2>
+            </div>
+        </div>
+    </section>
+    <section class="section_3">
+        <div class="conatct_map">
+            <div class="mapouter">
+                <div class="gmap_canvas"><iframe width="100%" height="500" id="gmap_canvas"
+                        src="https://maps.google.com/maps?q=lioli%20ceramica&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                        frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a
+                        href="https://www.whatismyip-address.com"></a><br>
+                    <style>
+                        .mapouter {
+                            position: relative;
+                            text-align: right;
+                            height: 500px;
+                            width: 100%;
+                        }
+                    </style>
+                    <style>
+                        .gmap_canvas {
+                            overflow: hidden;
+                            background: none !important;
+                            height: 500px;
+                            width: 100%;
+                        }
+                    </style>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section_4 container_contact">
+        <div class="">
+            <div class="row">
+                <div class="col-sm-6 mb-md-5 mb-3">
+                    <h4 class="font-weight-bold pb-3">
+                        HEAD OFFICE ADDRESS
+                    </h4>
+                    <p class="section_p">
+                        B Wing- 502/503/504, 5th Floor Kanakia Wall Street,Chakala, Andheri Kurla Road, Andheri (East), 
+                        Mumbai 400 093
+                    </p>
+                </div>
+                <div class="col-sm-6 mb-md-5 mb-3">
+                    <h4 class="font-weight-bold pb-3">
+                        CALL US
+                    </h4>
+                    <p class="section_p">
+                        <a href="" class="">
+                            +91 22 62807474
+                        </a>
+                    </p>
+                </div>
+                <div class="col-sm-6 mb-sm-0 mb-3">
+                    <h4 class="font-weight-bold pb-3">
+                        WORK ADDRESS
+                    </h4>
+                    <p class="section_p">
+                        NH 8/A, Bharat Nagar, Village Morbi,<br>
+                        Gujarat - 363642, INDIA
+                    </p>
+                </div>
+                <div class="col-sm-6 mb-sm-0 mb-3">
+                    <h4 class="font-weight-bold pb-3">
+                        REACH US
+                    </h4>
+                    <p class="section_p">
+                        <a href="" class="">
+                            info@lioliceramica.com
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section_5 container_contact">
+        <div class="row">
+            <div class="col-12 mb-5">
+                <h4 class="font-weight-bold ">
+                    CONTACT FORM
+                </h4>
+            </div>
+            <div class="col-12 mb-5">
+                <form id="contact_form" method="POST" enctype="multipart/form-data" onsubmit="return ValidCaptcha()">
+                    <div class="row">
+                        <div class="col-md-6 col-12 mb-3">
+                            <div class="form-group">
+                                <label for="assistence">Assistence In *</label>
+                                <input type="text" class="form-control" id="assistence" name="assistence" placeholder="Assistence In"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12 mb-3">
+                            <div class="form-group">
+                                <label for="first_name">First Name *</label>
+                                <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12 mb-3">
+                            <div class="form-group">
+                                <label for="last_name">Last Name *</label>
+                                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12 mb-3">
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="text" class="form-control" id="email" name="email" placeholder="Email Address" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12 mb-3">
+                            <div class="form-group">
+                                <label for="contact_no">Contact No. *</label>
+                                <input type="number" class="form-control" id="contact_no" name="phone" placeholder="Contact No."
+                                    required>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12 mb-3">
+                            <div class="form-group">
+                                <label for="profession">Profession *</label>
+                                <input type="text" class="form-control" id="profession" name="profession" placeholder="Profession"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12 mb-3">
+                            <div class="form-group">
+                                <label for="representing_company">Representing Company *</label>
+                                <input type="text" class="form-control" id="representing_company" name="company" 
+                                    placeholder="Representing Company" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12 mb-3">
+                            <div class="form-group">
+                                <label for="town">Town / City *</label>
+                                <input type="text" class="form-control" id="town" name="town"
+                                    placeholder="Town / City" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-12 mb-3">
+                            <div class="form-group">
+                                <label for="country">Country *</label>
+                                <input type="text" class="form-control" id="country" name="country"
+                                    placeholder="Country" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12 mb-3">
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <input type="text" class="form-control" id="message" name="messages" placeholder="Message">
+                            </div>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <div class="form-group">
+                                <input type="text" id="txtCaptcha"
+                                    style="text-align: center; border: none; font-weight: bold; font-size: 20px; font-family: Modern"
+                                    readonly />
+                                <input type="button" id="btnrefresh" value="Refresh" onclick="GenerateCaptcha();" />
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" placeholder="Enter Captcha" class="form-control" id="txtCompare"
+                                    required />
+                            </div>
+                        </div>
+                        <div class="col-md-12 text-center col-12 mb-3 mt-3 contact_button">
+                            <button class="btn" type="submit" name="sendData">
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <section class="section_6 container_section">
+        <div class="">
+            <div class="row my-5">
+                <div class="col-12 mb-5 text-center">
+                    <div class="section_h2">
+                        <img src="{{url_for('static', filename='assets/images/contact/line2.png')}}" class="line">
+                    </div>
+                </div>
+                <div class="col-12 mb-5  text-center">
+                    <h2 class="section_h2" data-aos="fade">
+                        KNOW MORE ABOUT LIOLI
+                    </h2>
+                </div>
+                <div class="col-12 mb-5  text-center contact_button">
+                    <button class="btn" type="submit">
+                         <a href='{{url_for("main.about")}}' style="color: inherit;">Know More</a> 
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script type="text/javascript">
+        /* Function to Generat Captcha */
+        function GenerateCaptcha() {
+            var chr1 = Math.ceil(Math.random() * 10) + '';
+            var chr2 = Math.ceil(Math.random() * 10) + '';
+            var chr3 = Math.ceil(Math.random() * 10) + '';
+
+            var str = new Array(4).join().replace(/(.|$)/g, function () { return ((Math.random() * 36) | 0).toString(36)[Math.random() < .5 ? "toString" : "toUpperCase"](); });
+            var captchaCode = str + chr1 + ' ' + chr2 + ' ' + chr3;
+            document.getElementById("txtCaptcha").value = captchaCode
+        }
+        $(document).ready(function () {
+            // executes when complete page is fully loaded, including all frames, objects and images
+            GenerateCaptcha();
+        });
+
+        /* Validating Captcha Function */
+        function ValidCaptcha() {
+            var mobile = document.getElementById("contact_no");
+            var str1 = removeSpaces(document.getElementById('txtCaptcha').value);
+            var str2 = removeSpaces(document.getElementById('txtCompare').value);
+
+            if (str1 == str2 && mobile.value.length == 10) {
+                return true;
+
+            }
+            else if (mobile.value.length != 10) {
+                alert("Please enter a valid phone number.");
+                return false;
+            }
+            else {
+                alert("Please enter a Proper Captcha.");
+                return false;
+            }
+        }
+
+        /* Remove spaces from Captcha Code */
+        function removeSpaces(string) {
+            return string.split(' ').join('');
+        }
+
+
+    </script>
+</div>
+{% endblock %}

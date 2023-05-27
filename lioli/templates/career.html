@@ -1,0 +1,170 @@
+{% extends "layout.html" %}
+{% block content %}
+<div id="career">
+    <section class="section_1 container_section">
+    </section>
+    <section class="section-2">
+        <div class="">
+            <div class="row">
+                <div class="col-12 mb-3 text-center">
+                    <div class="section_h2">
+                        <img src="{{url_for('static', filename='assets/images/index/about_line.png')}}" class="line">
+                    </div>
+                </div>
+                <div class="col-12 mb-0 text-center">
+                    <h2 class="section_h2" data-aos="fade">
+                        Careers
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <div class="container" style="padding-top: 30px;">
+            <div class="mb-0">
+                <div class="row">
+                    <div class="col-lg-8" data-aos="fade-up">
+                        <h1>WORK WITH LEADING</h1>
+                        <h1><b>LUXURY SURFACE BRAND</b></h1>
+                        <p style="font-size: 16px;">
+                            At Lioli, we’re guided by the principle that our employees are our greatest asset.
+                            We construct a strong investment in our people.
+                        </p>
+                    </div>
+                    <div class="col-lg-7"></div>
+                </div>
+                <div class="row mt-5 no-gutters" data-aos="fade">
+                    <div class="col-lg-7">
+                        <div class="banner">
+                            <img src="{{url_for('static', filename='assets/banner-2.jpeg')}}" />
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="bg-grey p-5">
+                            <h2>Why</h2>
+                            <h1>Lioli..</h1>
+                            <div class="mt-5">
+                                <p> <i class="far fa-handshake"></i> &nbsp;Ambient Culture</p>
+                                <hr />
+                                <p> <i class="fas fa-trophy"></i> &nbsp;Career Progression</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    {% for career in careers %}
+                    {% for location in career.location.split(',') %}
+                    <div class="col-lg-6 mb-5">
+                        <div class="bg-white py-5 px-3">
+                            <div class="row">
+                                <div class="col-5 br-right">
+                                    <h3 class="mb-5"><b>{{career.post}}</b></h3>
+                                    <p class="lg-txt"><b><i class="fas fa-map-marker-alt"></i> {{location}}</b></p>
+                                    <p class="sm-txt">{{career.experience}}</p>
+                                </div>
+                                <div class="col-7">
+                                    <p>
+                                        {{career.description}}
+                                    </p>
+                                    <button>
+                                        <a href='{{url_for("career.careers_details",career_id=career.id,location=location)}}'>
+                                            See Details
+                                        </a>
+                                    </button>
+                                    <p class="xs-txt">Posted on: {{ career.date_posted.strftime('%Y-%m-%d') }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% endfor %}
+                    <div class="col-12 mb-0">
+                        <hr class="white-hr" />
+                    </div>
+                </div>
+            </div>
+    </section>
+    <section class="section-3">
+        <div class="container mt-0 pt-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 col-12 mb-0 px-md-5 px-0">
+                    <div class="section_h2">
+                        <img src="{{url_for('static', filename='assets/images/index/about_line.png')}}" class="line">
+                    </div>
+                    <br>
+                    <h2 class="section_h2 text-left" data-aos="fade">
+                        Join our team
+                    </h2>
+                    <br>
+                    <p class="section_p text-left">
+                        We're always on the lookout for good people. If
+                        you think you'd be a great addition to our team
+                        but don't quite fit into the roles listed, send us
+                        your CV and we will be in-touch.
+                    </p>
+                </div>
+                <div class="col-lg-6 col-md-10 col-12 mt-0" data-aos="fade-left">
+                    <div class="form">
+                        <form enctype="multipart/form-data" method="post" id="myform">
+                            <div class="row">
+                                <div class="col-12 mb-3 px-1">
+                                    <label>Designation</label><br>
+                                    <input type="text" class="form-control" name="designation" required="required">
+                                </div>
+                                <div class="col-12 mb-3 px-1">
+                                    <label>Job Location</label><br>
+                                    <input type="text" class="form-control" name="location" required="required">
+                                </div>
+                                <div class="col-12 mb-3 px-1">
+                                    <label>First Name</label><br>
+                                    <input type="text" class="form-control" name="first_name" required="required">
+                                </div>
+                                <div class="col-12 mb-3 px-1">
+                                    <label>Last Name</label><br>
+                                    <input type="text" class="form-control" name="last_name" required="required">
+                                </div>
+                                <div class="col-12 mb-3 px-1">
+                                    <label>Email Address</label><br>
+                                    <input type="email" class="form-control" name="email" required="required">
+                                </div>
+                                <div class="col-12 mb-3 px-1">
+                                    <label>Phone</label><br>
+                                    <input type="tel" class="form-control" name="phone" id="contact_mobile" required="required">
+                                </div>
+                                <div class="col-12 mb-3 px-1">
+                                    <label>Address</label><br>
+                                    <input type="text" class="form-control" name="address" placeholder="Address" required="required">
+                                </div>
+                                <div class="col-5 mb-3 px-1">
+                                    <input type="text" class="form-control" name="city" placeholder="City" required="required">
+                                </div>
+                                <div class="col-4 mb-3 px-1">
+                                    <input type="text" class="form-control" name="state" placeholder="State / Province" required="required">
+                                </div>
+                                <div class="col-3 mb-3 px-1">
+                                    <input type="text" class="form-control" name="pincode" placeholder="Postal Code" required="required">
+                                </div>
+                                <div class="col-12 mb-3 px-1">
+                                    <input type="file" id="actual-btn" name="resume" hidden required="required" />
+                                    <label for="actual-btn" class="resume_career">Resume &nbsp; <i class="fas fa-paperclip"></i></label>
+                                    <span id="file-chosen">No file chosen</span>
+                                </div>
+                                <div class="col-12 mb-3 px-1">
+                                    <button type="submit" class="apply">Apply</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<script type="text/javascript">
+const actualBtn = document.getElementById('actual-btn');
+
+const fileChosen = document.getElementById('file-chosen');
+
+actualBtn.addEventListener('change', function() {
+    fileChosen.textContent = this.files[0].name
+})
+</script>
+{% endblock %}

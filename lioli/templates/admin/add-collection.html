@@ -1,0 +1,33 @@
+{% extends "admin/layout.html" %}
+{% block content %}
+<div class="x_content container">
+    <Fieldset>
+        <Legend>
+            <h3>
+                Add Collection
+            </h3>
+        </Legend>
+        <form {% if collection_id %}action="/admin/edit_collection/{{collection_id}}" {% else %} action="/admin/add_collection" {% endif %} method="post">
+            <div class="form-group">
+                <label for="collection">
+                    Collection
+                </label>
+                {% if collection_id %}
+                <input type="text" id="collection" class="form-control" name="collection_name" placeholder="Collection" value="{{collection.collection}}" required>
+                {% else %}
+                <input type="text" id="collection" class="form-control" name="collection_name" placeholder="Collection" required>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">
+                    {% if collection_id %}
+                    Edit Collection
+                    {% else %}
+                    Add Collection
+                    {% endif %}
+                </button>
+            </div>
+        </form>
+    </Fieldset>
+</div>
+{% endblock content %}

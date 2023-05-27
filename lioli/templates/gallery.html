@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+{% block content %}
+<div id="gallery">
+    <section class="section_1 container_section">
+    </section>
+    <section class="section-2">
+        <div class="">
+            <div class="row">
+                <div class="col-12 mb-3 text-center">
+                    <div class="section_h2">
+                        <img src="{{url_for('static', filename='assets/images/index/about_line.png')}}" class="line">
+                    </div>
+                </div>
+                <div class="col-12 mb-0 text-center">
+                    <h2 class="section_h2" data-aos="fade">
+                        Gallery
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <div class="container" style="padding-top: 30px;">
+            <div class="row">
+                {% for gallery in gallerys %}
+                {% if gallery.link == '' or gallery.link == None %}
+                <div class="col-lg-6 col-md-6 col-sm-12 mb-5 mt-0">
+                    <div class="video-wrapper">
+                        <div class="video-container" id="video-container">
+                            <video controls id="video{{gallery.id}}" preload="metadata" poster="{{url_for('static', filename='admin/uploads/gallery/preview/'+gallery.preview)}}">
+                                <source src="{{url_for('static', filename='admin/uploads/gallery/video/'+gallery.video)}}" type="video/mp4">
+                            </video>
+                            <div class="play-button-wrapper">
+                                <div title="Play video" class="play-gif" id="circle-play-b{{gallery.id}}">
+                                    <!-- SVG Play Button -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
+                                        <path d="M40 0a40 40 0 1040 40A40 40 0 0040 0zM26 61.56V18.44L64 40z" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                const video{{gallery.id}} = document.getElementById("video{{gallery.id}}");
+                const circlePlayButton{{gallery.id}} = document.getElementById("circle-play-b{{gallery.id}}");
+
+                function togglePlay(){
+                if (video{{gallery.id}}.paused || video{{gallery.id}}.ended){
+                video{{gallery.id}}.play();
+                } else{
+                video{{gallery.id}}.pause();
+                }
+                }
+
+                circlePlayButton{{ gallery.id}}.addEventListener("click", togglePlay);
+                video{{gallery.id}}.addEventListener("playing", function(){
+                circlePlayButton{{gallery.id}}.style.opacity = 0;
+                });
+                video{{ gallery.id}}.addEventListener("pause", function(){
+                circlePlayButton{{gallery.id}}.style.opacity = 1;
+                });
+                </script>
+                {% else %}
+                <div class="col-lg-6 col-md-6 col-sm-12 mb-5 mt-0">
+                    <div class="box-video">
+                        <div class="video-container">
+                            <iframe width="560" height="315" src="{{gallery.link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}{% endfor %} </div>
+        </div>
+    </section>
+</div>
+<script>
+</script>
+{% endblock %}

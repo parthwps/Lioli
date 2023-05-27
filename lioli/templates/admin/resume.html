@@ -1,0 +1,139 @@
+{% extends "admin/layout.html" %}
+{% block content %}
+<div class="x_content container">
+    <div class="row px-md-5 px-2">
+        <div class="col-md-6 mb-2">
+            <h3>
+                Resume
+            </h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card-box table-responsive">
+                <table id="datatable-buttons" class="table table-striped table-bordered" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>
+                                Id
+                            </th>
+                            <th>
+                                Post
+                            </th>
+                            <th>
+                                Location
+                            </th>
+                            <th>
+                                Date
+                            </th>
+                            <th>
+                                First Name
+                            </th>
+                            <th>
+                                Last Name
+                            </th>
+                            <th>
+                                Email
+                            </th>
+                            <th>
+                                Mobile Number
+                            </th>
+                            <th>
+                                Address
+                            </th>
+                            <th>
+                                State
+                            </th>
+                            <th>
+                                City
+                            </th>
+                            <th>
+                                Pincode
+                            </th>
+                            <th>
+                                Resume
+                            </th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for resume in resumes %}
+                        <tr>
+                            <td>
+                                {{resume.id}}
+                            </td>
+                            <td>
+                                {{resume.post}}
+                            </td>
+                            <td>
+                                {{resume.location}}
+                            </td>
+                            <td>
+                                {{resume.date_posted.strftime('%Y-%m-%d')}}
+                            </td>
+                            <td>
+                                {{resume.first_name}}
+                            </td>
+                            <td>
+                                {{resume.last_name}}
+                            </td>
+                            <td>
+                                {{resume.email}}
+                            </td>
+                            <td>
+                                {{resume.mobile}}
+                            </td>
+                            <td>
+                                {{resume.address}}
+                            </td>
+                            <td>
+                                {{resume.city}}
+                            </td>
+                            <td>
+                                {{resume.state}}
+                            </td>
+                            <td>
+                                {{resume.postal_code}}
+                            </td>
+                            <td>
+                                   <a class="btn btn-primary" href="{{url_for('static', filename='admin/uploads/resume/'+resume.resume)}}" target="_blank">
+                                       View
+                                   </a>
+                            </td>
+                            <td class="action">
+                                <button class="btn" data-toggle="modal" data-target="#delete_resume{{resume.id}}">
+                                    <i class="fa fa-trash-o"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <div class="modal fade" id="delete_resume{{resume.id}}" tabindex="-1" role="dialog" aria-labelledby="delete_resume{{resume.id}}Label" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="delete_resume{{resume.id}}Label">Modal title</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Are You Sure You Want To Delete The {{resume.first_name}} ??
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">
+                                            <a href='{{url_for("admin.delete_resume",resume_id=resume.id)}}' style="color: inherit;">
+                                                Confirm
+                                            </a>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

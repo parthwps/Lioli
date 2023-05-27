@@ -1,0 +1,126 @@
+{% extends "layout.html" %}
+{% block content %}
+<div id="career_inside">
+    <section class="section_1 container_section">
+    </section>
+    <section class="section-2">
+        <div class="">
+            <div class="row">
+                <div class="col-12 mb-5 text-center">
+                    <div class="section_h2">
+                        <img src="{{url_for('static', filename='assets/images/index/about_line.png')}}" class="line">
+                    </div>
+                </div>
+                <div class="col-12 mb-0 text-center">
+                    <!-- <h2 class="section_h2" data-aos="fade">
+                        Careers
+                    </h2> -->
+                    <h3 class="career_h3">
+                        {{career.post}}
+                    </h3>
+                    <p class="career_p">
+                       <!--  (Retail / Projects) -->
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <section class="career_details_section2">
+                <div class="row">
+                    <div class="col-12 users" style="" data-aos="fade-up">
+                        <i class="fas fa-users" style=""></i>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 mb-5 " data-aos="fade-right">
+                        <div class="career_details">
+                            <div class="">
+                                <h5 class="career_h5">
+                                    About You
+                                </h5>
+                                <p class="career_p2">
+                                    Location : {{location}}<br>
+                                    Experience : {{career.experience}}<br>
+                                    Salary : {{career.salary}}<br>
+                                    Posted on : {{ career.date_posted.strftime('%Y-%m-%d') }}<br>
+                                </p>
+                                <br>
+                                <p class="career_p2">
+                                    {{career.description}}
+                                </p>
+                                <br>
+                                <h5 class="career_h5 pb-4">
+                                    Requirements
+                                </h5>
+                                <ul class="career_ul">
+                                    {% for requirement in career.requirements.split('.') %}
+                                    <li>
+                                        <p class="career_li"> {{requirement}}.</p>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 mb-5" data-aos="fade-left">
+                        <div id="career_form">
+                            <div class="form">
+                                <form name="form1" enctype="multipart/form-data" method="post" id="application-form">
+                                    <div class="row">
+                                        <input type="hidden" name="post" value="{{career.post}}">
+                                        <div class="col-12 mb-3 px-1">
+                                            <label>First Name</label><br>
+                                            <input type="text" class="form-control" name="first_name" required="required">
+                                        </div>
+                                        <div class="col-12 mb-3 px-1">
+                                            <label>Last Name</label><br>
+                                            <input type="text" class="form-control" name="last_name" required="required">
+                                        </div>
+                                        <div class="col-12 mb-3 px-1">
+                                            <label>Email Address</label><br>
+                                            <input type="email" class="form-control" name="email" required="required">
+                                        </div>
+                                        <div class="col-12 mb-3 px-1">
+                                            <label>Phone</label><br>
+                                            <input type="tel" class="form-control" name="phone" id="contact_mobile" required="required">
+                                        </div>
+                                        <div class="col-12 mb-3 px-1">
+                                            <label>Address</label><br>
+                                            <input type="text" class="form-control" name="address" placeholder="Address" required="required">
+                                        </div>
+                                        <div class="col-5 mb-3 px-1">
+                                            <input type="text" class="form-control" name="city" placeholder="City" required="required">
+                                        </div>
+                                        <div class="col-4 mb-3 px-1">
+                                            <input type="text" class="form-control" name="state" placeholder="State / Province" required="required">
+                                        </div>
+                                        <div class="col-3 mb-3 px-1">
+                                            <input type="text" class="form-control" name="pincode" placeholder="Postal Code" required="required">
+                                        </div>
+                                        <div class="col-12 mb-3 px-1">
+                                            <input type="file" id="actual-btn" name="resume" hidden required="required" />
+                                            <label for="actual-btn" class="resume_career">Resume &nbsp; <i class="fas fa-paperclip"></i></label>
+                                            <span id="file-chosen">No file chosen</span>
+                                        </div>
+                                        <div class="col-12 mb-3 px-1">
+                                            <button type="submit" class="apply">Apply</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+            <script type="text/javascript">
+            const actualBtn = document.getElementById('actual-btn');
+
+            const fileChosen = document.getElementById('file-chosen');
+
+            actualBtn.addEventListener('change', function() {
+                fileChosen.textContent = this.files[0].name
+            })
+            </script>
+        </div>
+    </section>
+</div>
+{% endblock %}

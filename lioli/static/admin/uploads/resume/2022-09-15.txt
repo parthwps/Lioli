@@ -1,0 +1,46 @@
+
+[2022-09-15 05:12:31:031] Net: [Request]: GET https://gw.aoscdn.com/base/support/client/vip-code-switch?app_version=1.4.8&pro_id=144
+    [Headers]: None
+    [Body]: None
+[Response]:
+    [Status Code]: 200
+    [Headers]:
+        Access-Control-Allow-Origin: *
+        Content-Length: 49
+        Content-Type: application/json;charset=utf-8
+        Date: Thu, 15 Sep 2022 11:42:31 GMT
+        eagleid: 81e3cea116632421512743788e
+        Server: Tengine
+        timing-allow-origin: *
+        Via: cache4.l2hk2[7,0], cache13.in9[109,0]
+        x-cache-key: 4ef89c34343c85ff792669911f549f40
+        x-cache-status: Bypass
+        x-request-id: 841cdbc0-2b96-4d46-8813-00646b6fd89f
+    [Body]:
+        {"status":200,"message":"ok","data":{"status":0}}
+[Network Duration]: 0.5587589740753174s
+[Serialization Duration]: 5.52500132471323e-05s
+[Result]: success(49 bytes)
+
+[2022-09-15 05:12:31:031] Net: [Request]: GET https://gw.aoscdn.com/base/support/client/product/switches?pro_id=144&type=mirror-day
+    [Headers]: None
+    [Body]: None
+[Response]:
+    [Status Code]: 200
+    [Headers]:
+        Access-Control-Allow-Origin: *
+        Content-Length: 49
+        Content-Type: application/json;charset=utf-8
+        Date: Thu, 15 Sep 2022 11:42:31 GMT
+        eagleid: 81e3cea116632421512743795e
+        Server: Tengine
+        timing-allow-origin: *
+        Via: cache27.l2hk2[6,0], cache13.in9[110,0]
+        x-cache-key: d2fe0d57b1d8e50da25e6b3c88ba881a
+        x-cache-status: Bypass
+        x-request-id: d7136e86-d765-44da-85e1-afa5e476bd59
+    [Body]:
+        {"status":200,"message":"ok","data":{"status":0}}
+[Network Duration]: 0.5587320327758789s
+[Serialization Duration]: 3.916677087545395e-06s
+[Result]: success(49 bytes)

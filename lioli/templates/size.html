@@ -1,0 +1,101 @@
+{% extends "layout.html" %}
+{% block content %}
+<div id="collection">
+    <section class="section_1 container_section">
+    </section>
+    <section class="section_2">
+        <div class="">
+            <div class="row justify-content-center">
+                <div class="col-12 mb-3 text-center">
+                    <div class="section_h2">
+                        <img src="{{url_for('static', filename='assets/images/index/about_line.png')}}" class="line">
+                    </div>
+                </div>
+                <div class="col-md-8 col-12 px-md-0 px-5 mb-0 pb-0 text-center">
+                    <h2 class="section_h2" data-aos="fade">
+                        Discover Our Collection
+                    </h2>
+                    <br>
+                    <p class="section_p text-justify" data-aos="fade">
+                        <b>It's All in the Art of Captivating</b>
+                    </p>
+                    <p class="section_p text-justify" data-aos="fade">
+                        Lioli is a top player in the porcelain tile manufacturing industry that believes in creating and fulfilling the needs of modern architectural design and creating awesome spaces for its customers. When you choose us, you choose for yourself an experience that enriches your living like never before. Available in Lustrous, Rusticmatt, Orgatech, Structure and Crystalline Series to give your home, office, cafe, hotel, art studio or any space a truly out of this world look.
+                    </p>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="container" style="padding-top: 30px;padding-bottom: 30px;">
+            <div class="row">
+                <div class="col-12 mb-3 text-center">
+                    <div class="size_images">
+                        <img src="{{url_for('static', filename='assets/images/size3.png')}}" class="">
+                    </div>
+                </div>
+                <div class="col-12 mb-3">
+                    <div>
+                        <div class="total_collection float-right">
+                            5 Sizes
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 mb-0 pb-0">
+                    <div class="row justify-content-center">
+                        {% for size in sizes %}
+                        <div class="col-lg-4 col-md-6 mb-5" data-aos="fade-in">
+                            <a href='{{url_for("product.products",size = size.size)}}'>
+                                <div class="collection_card">
+                                    <div class="collection_card_img">
+                                        <img src="{{url_for('static', filename='admin/uploads/size/'+size.size_image)}}" />
+                                    </div>
+                                    <h6>
+                                        {{size.size}}
+                                    </h6>
+                                </div>
+                            </a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            
+            <div class="col-md-8 col-12 px-md-0 px-5 mb-5 pb-0 text-center">
+                
+                <p class="section_p text-justify" data-aos="fade">
+                    At Lioli, large format slabs available in different sizes are manufactured blending technical sophistication and creative finesse making every floor, wall, countertop, bathroom and outdoor look royal and elegant. Every style, design, texture, colour and finish is made to precision ensuring the tiles you install stay beautiful, durable and stunning as ever. This is what makes us Lioli, an esteemed porcelain tile manufacturing brand in India.
+                </p>
+            </div>
+        </div>
+    </section>
+    <section class="section_3">
+        <div class="container">
+            <div class="row my-5">
+                <div class="col-12 mb-5 text-center">
+                    <div class="section_h2">
+                        <img src="{{url_for('static', filename='assets/images/contact/line2.png')}}" class="line">
+                    </div>
+                </div>
+                <div class="col-12 mb-5  text-center">
+                    <h2 class="section_h2" data-aos="fade">
+                        GET IN TOUCH WITH OUR REPRESENTATIVE TO LEARN MORE ABOUT THE PRODUCTS YOU ARE INTRESTED
+                    </h2>
+                </div>
+                <div class="col-12 mb-5  text-center contact_button">
+                    <button class="btn" type="submit">
+                        <a href='{{url_for("main.contact")}}' style="color: inherit;">GET IN TOUCH</a> 
+                    </button>
+                    <h6>
+                        Or
+                    </h6>
+                    <h6>
+                        Contact Us On <a href="telto:+91 22 62807474">+91 22 62807474</a>
+                    </h6>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

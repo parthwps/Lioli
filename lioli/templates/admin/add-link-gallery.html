@@ -1,0 +1,33 @@
+{% extends "admin/layout.html" %}
+{% block content %}
+<div class="x_content container">
+    <Fieldset>
+        <Legend>
+            <h3>
+                Add Youtube Or Iframe Embed Link
+            </h3>
+        </Legend>
+        <form {% if gallery_id %}action="/admin/edit_gallery/{{gallery_id}}" {% else %} action="/admin/add_gallery/0" {% endif %} method="post">
+            <div class="form-group">
+                <label for="gallery">
+                    Link
+                </label>
+                {% if gallery_id %}
+                <input type="text" id="gallery" class="form-control" name="link" placeholder="Add Youtube Or Iframe Embed Link" value="{{gallery.link}}" required>
+                {% else %}
+                <input type="text" id="gallery" class="form-control" name="link" placeholder="Add Youtube Or Iframe Embed Link" required>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">
+                    {% if gallery_id %}
+                    Edit Link
+                    {% else %}
+                    Add Link
+                    {% endif %}
+                </button>
+            </div>
+        </form>
+    </Fieldset>
+</div>
+{% endblock content %}

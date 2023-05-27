@@ -1,0 +1,133 @@
+{% extends "layout.html" %}
+{% block content %}
+<div id="catalogue">
+    <section class="section_1 container_section">
+    </section>
+    <section class="section-2">
+        <div class="">
+            <div class="row">
+                <div class="col-12 mb-3 text-center">
+                    <div class="section_h2">
+                        <img src="{{url_for('static', filename='assets/images/index/about_line.png')}}" class="line">
+                    </div>
+                </div>
+                <div class="col-12 mb-0 text-center">
+                    <h2 class="section_h2" data-aos="fade">
+                        Downloads
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <div class="container" style="padding-top: 30px;">
+            <div class="row">
+                {% for catalogue in catalogues %}
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-5 mt-0">
+                    <div class="wrapper text-center">
+                        <div class="wrapper-img">
+                            <img src="{{url_for('static', filename='admin/uploads/catalogue/preview/'+catalogue.preview)}}"
+                                width="100%" />
+                        </div>
+                        <h2>
+                            {{catalogue.catalogue_name}}
+                        </h2>
+                        <div class="text-center justify-content-center">
+                            <div>
+                                <button class="" data-toggle="modal" data-target="#exampleModal{{catalogue.id}}">
+                                    
+                                    Download
+                                    
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- Modal -->
+                <div class="modal fade bd-example-modal-lg p-5" id="exampleModal{{catalogue.id}}" tabindex="-1"
+                    role="dialog" aria-labelledby="exampleModalLabel{{catalogue.id}}" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel{{catalogue.id}}">Download Pdf
+                                    {{catalogue.catalogue_name}} </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form method="POST" enctype="multipart/form-data" onsubmit="return Validating{{catalogue.id}}()">
+                                    <div class="form-group">
+                                        <input type="hidden" id="catalogue_name" name="catalogue_name"
+                                            value="{{catalogue.catalogue_name}}">
+
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="hidden" id="pdf" name="pdf" value="{{catalogue.pdf}}">
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name">Full Name*</label>
+                                        <input type="text" class="form-control" id="name" placeholder="Enter Full Name"
+                                            name="full_name" required>
+
+                                    </div>
+
+
+
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Email address*</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1"
+                                            aria-describedby="emailHelp" placeholder="Enter email" name="email"
+                                            required>
+                                        <small id="emailHelp" class="form-text text-muted">We'll never share your email
+                                            with anyone else.</small>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label for="contact_no">Contact No. *</label>
+                                        <input type="number" class="form-control" id="contact_no{{catalogue.id}}" name="phone"
+                                            placeholder="Contact No." required>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">City</label>
+                                        <input type="text" class="form-control" name="city"
+                                            placeholder="Enter City" required>
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="message">Message</label>
+                                        <input type="text" class="form-control" id="message"
+                                            aria-describedby="emailHelp" placeholder="Enter Message" name="messages">
+
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    function Validating{{catalogue.id}}() {
+                        var mobile = document.getElementById("contact_no{{catalogue.id}}");
+                        if (mobile.value.length != 10) {
+                            alert("Please enter a valid phone number.");
+                            return false;
+                        }
+                        else {
+                            return true;
+                        }
+                    }
+                </script>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</div>
+
+{% endblock %}

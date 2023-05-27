@@ -1,0 +1,16 @@
+ 1148  pip install mysql-connector\n
+ 1149  flask db init
+ 1150  pip install sendgrid
+ 1151  flask db init
+ 1152  pip install PILLOW
+ 1153  flask db init
+ 1154  pip install flask_script
+ 1155  flask db init
+ 1156  pip install flask._compat
+ 1157  pip install flask-script==2.0.5\n
+ 1158  flask db init
+ 1159  flask db migrate
+ 1160  flask db migrate
+ 1161  flask db upgrade
+ 1162  python run.py
+ 1163  cat ~/.bash_history

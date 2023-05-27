@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      {% if title %}
+      {{title}}
+      {% else %}
+      Lioli Ceramica 
+      {% endif %}
+    </title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   {% if desc %}
+   <meta name="description" content="{{desc}}" />
+   {% else %}
+   <meta name="description" content="" />
+   {% endif %}
+    <meta name="keywords" content="" />
+    <meta name="author" content="" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{{url_for('static', filename='assets/images/icon.png')}}">
+    <link rel="icon" type="image/png')}}" sizes="32x32" href="{{url_for('static', filename='assets/images/icon.png')}}">
+    <link rel="icon" type="image/png')}}" sizes="16x16" href="{{url_for('static', filename='assets/images/icon.png')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='assets/css/header.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='assets/css/main.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='assets/css/media_query.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='assets/css/footer.css')}}">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/60401daa0f.js" crossorigin="anonymous"></script>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css'>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='assets/lib/aos.css')}}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+</head>
+
+<body id="">
+    <div id="preloader">
+        <div id="status">&nbsp;
+            <div class="overlay-bg">
+                <div class="text-bg">
+                    <!-- <img src="{{url_for('static', filename='assets/images/logo/logo.png')}}" height="30px" width="auto"> -->
+                    <video autoplay muted playsinline>
+                        <source src="{{url_for('static', filename='assets/videos/Lioli-Loding.mp4')}}">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+    <header id="header">
+        <div class="head-line">
+            <p>
+                To Speak with us Email or Call at <a href="tel: +91 22 62807474"><i class="fas fa-phone-alt"></i> +91 22
+                    62807474</a> |
+                <a href="mailto: info@lioliceramica.com"><i class="far fa-envelope"></i> info@lioliceramica.com</a>
+            </p>
+        </div>
+        <nav class="navbar navbar-expand-xl fixed-top navbar-light">
+            <a class="navbar-brand" href="/">
+                <img src="{{url_for('static', filename='assets/images/logo/logo.png')}}" style="height: 30px;width: auto;">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+                <ul class="navbar-nav nav-links">
+                    <li class="nav-item">
+                        <a class="nav-link" href='{{url_for("main.about")}}'>Company</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href='{{url_for("product.size")}}'>Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href='{{url_for("main.download")}}'>Downloads</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="media" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Media</a>
+                        <ul class="dropdown-menu dropdown-menu-single multi-level" role="menu" aria-labelledby="media">
+                            <li><a class="dropdown-item" href='{{url_for("main.gallery")}}'>Gallery</a></li>
+                            <li><a class="dropdown-item" href='{{url_for("blog.blog")}}'>BLogs</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href='{{url_for("career.careers")}}'>Career</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href='{{url_for("main.contact")}}'>Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">                                                            
+                            <div id='google_translate_element' class="cursor"></div>                            
+                        </a>
+                    </li>     
+                </ul>
+            </div>
+            <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <div class="search-icon">
+                            <span class="fas fa-search"></span>
+                        </div>
+                        <div class="cancel-icon">
+                            <span class="fas fa-times"></span>
+                        </div>
+                        <form action="/search" method="post">
+                            <input type="search" class="search-data" placeholder="Search" name="search" style="color: #000 !important;" required>
+                            <button type="submit" class="fas fa-search"></button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer id="footer">
+        <section class="footer_section">
+            <div class="row">
+                <div class="col-12 mb-5">
+                    <div class="white_logo"> <img src="{{url_for('static', filename='assets/images/logo/white_logo.png')}}" />
+                    </div>
+                </div>
+                <div class="col-md-4 mb-lg-0 mb-5">
+                    <div class="border_section">
+                        <h4>
+                            HEAD OFFICE
+                        </h4>
+                        <p class="footer_p">
+                            B Wing- 502/503/504, 5th Floor Kanakia Wall Street, Chakala, Andheri Kurla Road, Andheri (East), Mumbai 400 093
+                        </p>
+                        <a href="mailto:info@lioliceramica.com">
+                            info@lioliceramica.com
+                        </a>
+                        <br>
+                        <a href="telto:+912262807474">
+                            +91 22 62807474
+                        </a>
+                        <br>
+                        <br>
+                        <h4>
+                            WORKS
+                        </h4>
+                        <a href="">
+                            NH 8/A, Bharat Nagar, Village Morbi, Gujarat - 363642, INDIA
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-8 mb-lg-0 mb-5">
+                    <div class="row">
+                        <div class="col-lg-3 mb-lg-0 mb-5">
+                            <div class="footer_link_section">
+                                <h4>
+                                    LINKS
+                                </h4>
+                                <ul>
+                                    <li>
+                                        <a href='{{url_for("main.about")}}'>
+                                            Company
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href='{{url_for("product.size")}}'>
+                                            Products
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href='{{url_for("main.download")}}'>
+                                            Downloads
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href='{{url_for("main.gallery")}}'>
+                                            Gallery
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href='{{url_for("career.careers")}}'>
+                                            Career
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href='{{url_for("main.contact")}}'>
+                                            Contact
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 mb-lg-0 mb-5">
+                            <div class="footer_link_section">
+                                <h4>
+                                    LATEST BLOG POST
+                                </h4>
+                            </div>
+                            <a href='{{url_for("blog.blog_inside5")}}' style="text-decoration: none;">
+                                <div class="row footer-blog mb-3">
+                                    <div class="col-4">
+                                        <img src="{{url_for('static', filename='assets/images/blog/blog5/1.jpg')}}" alt="">
+                                    </div>
+                                    <div class="col-8 p-0">
+                                        <h6>
+                                            How To Clean Porcelain Tiles
+                                        </h6>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href='{{url_for("blog.blog_inside6")}}' style="text-decoration: none;">
+                                <div class="row footer-blog mb-3">
+                                    <div class="col-4">
+                                        <img src="{{url_for('static', filename='assets/images/blog/blog6/02.jpg')}}" alt="">
+                                    </div>
+                                    <div class="col-8 p-0">
+                                        <h6>
+                                                                                        How To Clean Grout: 7 Efficient Ways To Renew Old Grout As New
+
+                                        </h6>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-lg-3 mb-lg-0 mb-5">
+                            <div class="footer_link_section">
+                                <h4>
+                                    TERMS
+                                </h4>
+                                <ul>
+                                    <li>
+                                        <a href='{{url_for("main.faqs")}}'>
+                                            FAQs
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href='{{url_for("main.privacy")}}'>
+                                            Privacy Policy
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            Terms & Condition
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <br>
+                            <div class="social_link_section">
+                                <h4>
+                                    SOCIAL
+                                </h4>
+                                <ul>
+                                    <li>
+                                        <a href="https://www.instagram.com/lioliceramicaofficial/">
+                                            &nbsp;<i class="fab fa-instagram"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.facebook.com/lioliceramicapvtltd/">
+                                            &nbsp;<i class="fab fa-facebook-f"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.linkedin.com/company/lioli-ceramica-pvt-ltd/">
+                                            &nbsp;<i class="fab fa-linkedin-in"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="credit_section">
+            <div class="row">
+                <div class="col-md-6 col-12 text-left">
+                    <h4>
+                        Powered By&nbsp;<a href="https://www.cretxit.com/" style="color: inherit;">Cretx Infotech Pvt. Ltd.</a>
+                    </h4>
+                </div>
+                <div class="col-md-6 col-12 text-right">
+                    <h4>
+                        Copyright 2021 &copy; Lioli Ceramica
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script type="text/javascript" src="{{url_for('static', filename='assets/js/bootstrap-dropdownhover.min.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='assets/lib/aos.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='assets/lib/jquery.easeScroll.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='assets/js/main.js')}}"></script>
+    <script>
+        function googleTranslateElementInit() {
+           new google.translate.TranslateElement({
+           pageLanguage: 'en',
+           autoDisplay: 'true',
+           layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
+           }, 'google_translate_element');
+           var removePopup = document.getElementById('goog-gt-tt');
+           removePopup.parentNode.removeChild(removePopup);
+        }
+    </script>
+    <script src='//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'></script>
+       
+       
+       
+</body>
+
+</html>

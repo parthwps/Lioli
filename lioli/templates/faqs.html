@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+{% block content %}
+<div id="faqs">
+    <section class="section_1 container_section">
+    </section>
+    <section class="section-2">
+        <div class="">
+            <div class="row">
+                <div class="col-12 mb-5 text-center">
+                    <div class="section_h2">
+                        <img src="{{url_for('static', filename='assets/images/index/about_line.png')}}" class="line">
+                    </div>
+                </div>
+                <div class="col-12 mb-0 text-center">
+                    <h2 class="section_h2" data-aos="fade">
+                        Frequently Asked Questions
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <div class="container" style="padding-top: 30px;">
+            <div class="row mb-5 text-justify">
+                <div class="col-12">
+                    <button class="accordion">Why Lioli, a porcelain tile manufacturing company?
+                    </button>
+                    <div class="panel">
+                        <p>
+                            Within 4 years of entering the porcelain tile industry, Lioli has emerged as a prominent porcelain tile slab company in India. With the tech expertise and global-level innovation, Lioli is the top manufacturer of the 1600*3200mm slabs in Asia.
+                        </p>
+                    </div>
+                    <button class="accordion">What sizes are available in Lioli collections?
+                    </button>
+                    <div class="panel">
+                        <p>
+                            Lioli tile slabs are available in the following sizes- 1200*1200mm, 1200*2400mm, 1600*1600mm, 800*2400mm, 1600*3200mm.
+                        </p>
+                    </div>
+                    <button class="accordion">Does Lioli offer slab tiles for commercial space too?
+                    </button>
+                    <div class="panel">
+                        <p>
+                            Lioli offers an extensive collection of incredibly designed slab tiles for commercial space- be it indoor, outdoor, wall or floor space.
+                        </p>
+                        <p>
+                            Also, we bring exclusive slab tiles for residential places- whether a kitchen, living room, bathroom, bedroom or outer space, our slabs make your place an embodiment of your style and personality.
+                        </p>
+                    </div>
+                    <button class="accordion">What makes Lioli slabs unique?
+                    </button>
+                    <div class="panel">
+                        <p>
+                            By integrating the excellent craftsmanship and design, Lioli creates impeccable porcelain slab tiles that balance aesthetics and functionality.
+                        </p>
+                        <p>
+                            Our unique approach, robust R&D, and adapting to constantly changing customers needs and styles has led Lioli to become a leading porcelain slab tile company in India.
+                        </p>
+                    </div>
+                    <button class="accordion">Can Lioli slab tiles be used outdoors?
+                    </button>
+                    <div class="panel">
+                        <p>
+                            Ofcourse, yes. Lioli porcelain slabs can be used for outdoor spaces. Choose the tile slabs that suit your indoor and outdoor place from our perfectly crafted porcelain slab collection.
+                        </p>
+                    </div>
+                    <button class="accordion">What are the advantages of using porcelain slab tiles from Lioli?
+                    </button>
+                    <div class="panel">
+                        <p>
+                            Apart from being easy to clean and low maintenance, our porcelain slab tiles are abrasion-resistant, scratch and stain-resistant, superior durability while preserving the slabs’ beauty over the years!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.maxHeight) {
+            panel.style.maxHeight = null;
+        } else {
+            panel.style.maxHeight = panel.scrollHeight + "px";
+        }
+    });
+}
+</script>
+{% endblock content %}

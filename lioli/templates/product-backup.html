@@ -1,0 +1,279 @@
+{% extends "layout.html" %}
+{% block content %}
+<style>
+ 
+</style>
+<div id="products">
+    <section class="section_1 container_section">
+    </section>
+    <section class="section_2">
+        <div class="row section-title-head">
+            <div class="col-12 mb-1 text-center">
+                <h2 class="section_h2" data-aos="fade">
+                    {{size}}
+                </h2>
+            </div>
+            <div class="col-12 mb-0 text-center">
+                <div class="section_h2">
+                    <img src="{{url_for('static', filename='assets/images/index/about_line.png')}}" class="line">
+                </div>
+            </div>
+        </div>
+        <div class="container" style="padding-top: 30px;">
+            <div class="row">
+                <div class="col-12 mb-5 pb-0">
+                    <div>
+                        <div class="filters float-left">
+                        </div>
+                        <div class="total_products float-right">
+                            {% if collection %}
+                            Size/{{size}}/{{collection}}
+                            {% elif thickness %}
+                            Size/{{size}}/{{thickness}}
+                            {% elif surface %}
+                            Size/{{size}}/{{surface}}
+                            {% else %}
+                            Size/{{size}}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 mb-5 pb-5">
+                    <div class="row justify-content-center">
+                        <div class="col-12 px-md-5 px-3 mb-5 mobile-filter d-md-none d-block">
+                            <div class="row">
+                                <div class="col-sm-4 col-4 mb-3">
+                                    <div class="form-group">
+                                        <label for="size">
+                                            <h5 class="">
+                                                <b>
+                                                    Sizes
+                                                </b>
+                                            </h5>
+                                        </label>
+                                        <div class="dropdown">
+                                            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+                                                {% if size %}
+                                                {{size}}
+                                                {% else %}
+                                                size
+                                                {% endif %}
+                                            </button>
+                                            <div class="dropdown-menu">
+                                                {% for size in sizes %}
+                                                <a class="dropdown-item" href='{{url_for("product.products",size=size.size)}}'>
+                                                    {{size.size}}
+                                                </a>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 col-4 mb-3">
+                                    <div class="form-group">
+                                        <label for="size">
+                                            <h5 class="">
+                                                <b>
+                                                    Collections
+                                                </b>
+                                            </h5>
+                                        </label>
+                                        <div class="dropdown">
+                                            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+                                                {% if collection %}
+                                                {{collection}}
+                                                {% else %}
+                                                Collection
+                                                {% endif %}
+                                            </button>
+                                            <div class="dropdown-menu">
+                                                {% for collection in collections %}
+                                                <a class="dropdown-item" href='{{url_for("product.products_collections",size=size,collection=collection.collection)}}'>
+                                                    {{collection.collection}}
+                                                </a>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 col-4 mb-3">
+                                    <div class="form-group">
+                                        <label for="size">
+                                            <h5 class="">
+                                                <b>
+                                                    Finishes
+                                                </b>
+                                            </h5>
+                                        </label>
+                                        <div class="dropdown">
+                                            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+                                                {% if surface %}
+                                                {{surface}}
+                                                {% else %}
+                                                Finish
+                                                {% endif %}
+                                            </button>
+                                            <div class="dropdown-menu">
+                                                {% for finish in finishes %}
+                                                <a class="dropdown-item" href='{{url_for("product.products_surface",size=size,surface=finish.surface)}}'>
+                                                    {{finish.surface}}
+                                                </a>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 border-right filters d-md-block d-none">
+                            <div class="product-filter" id="product-filter">
+                                <div class="pb-2 pt-4 border-bottom">
+                                    <button class="accordion">
+                                        Sizes
+                                    </button>
+                                    <div class="panel">
+                                        <ul>
+                                            {% for sizes in sizes %}
+                                            {% if sizes.size == size %}
+                                            <li>
+                                                <a href='{{url_for("product.products",size=size)}}'>
+                                                    <span style="color: #000;">{{size}}</span>
+                                                </a>
+                                            </li>
+                                            {% else %}
+                                            <li>
+                                                <a href='{{url_for("product.products",size=sizes.size)}}'>
+                                                    {{sizes.size}}
+                                                </a>
+                                            </li>
+                                            {% endif %}
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="pb-2 pt-4 border-bottom">
+                                    <button class="accordion">
+                                        Collections
+                                    </button>
+                                    <div class="panel">
+                                        <ul>
+                                            {% for collections in collections %}
+                                            {% if collections.collection == collection %}
+                                            <li>
+                                                <a href='{{url_for("product.products_collections",size=size,collection=collection)}}'>
+                                                    <span style="color: #000;">{{collection}}</span>
+                                                </a>
+                                            </li>
+                                            {% else %}
+                                            <li>
+                                                <a href='{{url_for("product.products_collections",size=size,collection=collections.collection)}}'>{{collections.collection}}</a>
+                                            </li>
+                                            {% endif %}
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="pb-2 pt-4 border-bottom">
+                                    <button class="accordion">
+                                        Finishes
+                                    </button>
+                                    <div class="panel">
+                                        <ul>
+                                            {% for finishes in finishes %}
+                                            {% if finishes.surface == surface %}
+                                            <li>
+                                                <a href='{{url_for("product.products_surface",size=size,surface=surface)}}'>
+                                                    <span style="color: #000;">{{surface}}</span>
+                                                </a>
+                                            </li>
+                                            {% else %}
+                                            <li>
+                                                <a href='{{url_for("product.products_surface",size=size,surface=finishes.surface)}}'>
+                                                    {{finishes.surface}}
+                                                </a>
+                                            </li>
+                                            {% endif %}
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-10 col-md-9 px-md-5 px-1">
+                            <div class="row justify-content-md-start justify-content-center">
+                                {% if not products %}
+                                <div class="col-lg-12 col-sm-12 mb-5">
+                                    <div class="products_card">
+                                        <h3>
+                                            No Data Available.
+                                        </h3>
+                                    </div>
+                                </div>
+                                {% else %}
+                                {% for product in products %}
+                                <div class="product-row mb-md-5 mb-3" data-aos="fade-in">
+                                    <a href='{{url_for("product.product_inside",size=size,product_id=product.id,product_name=product.product_name)}}'>
+                                        <div class="products_card">
+                                            <div class="products_card_img" id="s{{size}}">
+                                                <img src="{{url_for('static', filename='admin/uploads/product/preview/'+product.preview)}}" />
+                                            </div>
+                                            <h6>
+                                                {{product.product_name}}
+                                            </h6>
+                                        </div>
+                                    </a>
+                                </div>
+                                {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section_3" id="product-cta">
+        <div class="container">
+            <div class="row my-5">
+                <div class="col-12 mb-5 text-center">
+                    <div class="section_h2">
+                        <img src="{{url_for('static', filename='assets/images/contact/line2.png')}}" class="line">
+                    </div>
+                </div>
+                <div class="col-12 mb-5  text-center">
+                    <h2 class="section_h2" data-aos="fade">
+                        GET IN TOUCH WITH OUR REPRESENTATIVE TO LEARN MORE ABOUT THE PRODUCTS YOU ARE INTRESTED
+                    </h2>
+                </div>
+                <div class="col-12 mb-5  text-center contact_button">
+                    <button class="btn" type="submit">
+                        <a href='{{url_for("main.contact")}}' style="color: inherit;">GET IN TOUCH</a>
+                    </button>
+                    <h6>
+                        Or
+                    </h6>
+                    <h6>
+                        Contact Us On <a href="telto:+91 22 62807474">+91 22 62807474</a>
+                    </h6>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.maxHeight) {
+            panel.style.maxHeight = null;
+        } else {
+            panel.style.maxHeight = panel.scrollHeight + "px";
+        }
+    });
+}
+</script>
+{% endblock %}
