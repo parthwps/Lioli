@@ -70,7 +70,7 @@
 
 
     /**Momentum Scroll**/
-    $("html").easeScroll();
+    // $("html").easeScroll();
 
     const video = document.getElementById("video");
     const circlePlayButton = document.getElementById("circle-play-b");

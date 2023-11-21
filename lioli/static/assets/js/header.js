@@ -8,4 +8,4 @@ $(window).scroll(function () {
 
 
 /**Momentum Scroll**/
-$("html").easeScroll();
+// $("html").easeScroll();
